@@ -26,7 +26,7 @@ use std::env;
 
 
 const DISPLAY_STR: &str = r#"
-For example: percussiveglitchbpm input.wav 120 2 0.25 0.30
+For example: ./main input.wav 120 2 0.25 0.30
 has bpm of 120, glitch probability on every half note, probability of node recurse on glitch of 0.25 
 and probability of initial glitch (causing recurse) of 0.30
 
@@ -34,31 +34,6 @@ You will more than likely want to splice the result with the input
 to keep the desired effect on a chunk and remove undesired artifacts.
 
 Some software like MilkyTracker doesn't use standard definitions of bpm."#;
-
-
-// fn glitch_recursive(generator: &mut ThreadRng, vector: &mut Vec<usize>, recurseprob: f64, num_samples: usize, repetitions: usize) {
-
-//     let recurse: bool = generator.gen::<f64>() % 1.0 < recurseprob;
-
-//     if !recurse || num_samples <= 1 {
-
-//         let nsamples = num_samples as usize;
-//         let times = repetitions as usize;
-
-//         for _ in 0..times {
-
-//             vector.push(nsamples);
-
-//         }
-
-//         return;
-
-//     }
-
-//     glitch_recursive(generator, vector, recurseprob, num_samples / 2, repetitions * 2);
-//     glitch_recursive(generator, vector, recurseprob, num_samples / 2, repetitions * 2);
-
-// }
 
 
 fn glitch_iterative(generator: &mut ThreadRng, vector: &mut Vec<usize>, recurseprob: f64, num_samples: usize, repetitions: usize) {
